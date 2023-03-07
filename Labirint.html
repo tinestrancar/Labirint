@@ -1,0 +1,38 @@
+<html>
+    <head><title>Labirint</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <div id="zunanji">MESOJEDEC</div>
+
+        <div id="main">
+            <canvas id="mycanvas" width="500" height="500"></canvas>
+            <script>
+                let c = document.getElementById('mycanvas');
+                let ctx = c.getContext('2d');
+
+                let map =   [[0,1,0,0,0]
+                            [0,1,1,0,0]
+                            [0,0,0,0,0]];
+
+                function drawMap(m){
+                    for(int i=0; i<m.length; i++){
+                        for(int j=0; j<m[i].length; j++){
+                            if(m[i][j]==1){
+                                ctx.beginPath();
+                                ctx.fillStyle= "#000000";
+                                ctx.fillRect(j*20, i*20, 20, 20);
+                            }
+                        }
+                    }
+                }
+                window.onload = function(){
+                    drawMap(map);
+                }
+            </script>
+        </div>
+    </body>
+
+
+</html>
