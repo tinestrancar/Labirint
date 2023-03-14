@@ -7,29 +7,117 @@
         <div id="zunanji">MESOJEDEC</div>
 
         <div id="main">
-            <canvas id="mycanvas" width="500" height="500"></canvas>
+            <canvas id="mycanvas" width="740" height="620"></canvas>
             <script>
-                let c = document.getElementById('mycanvas');
-                let ctx = c.getContext('2d');
+                
+                var canvas = document.getElementById("mycanvas");
+console.log(canvas);
+var ctx = canvas.getContext("2d");
 
-                let map =   [[0,1,0,0,0]
-                            [0,1,1,0,0]
-                            [0,0,0,0,0]];
+let map1 = [
+"...##################################",
+"...#..#..#........#........#........#",
+"#..#..#..####..#..#######..#..#..#..#",
+"#..#.....#.....#..............#..#..#",
+"#..#..####..#######..#..#..####..####",
+"#........#........#..#..#..#........#",
+"#..#..#..###################..#..#..#",
+"#..#..#..#..#..#..#.....#..#..#..#..#",
+"#..#..####..#..#..#..#..#..#..#######",
+"#..#........#........#........#.....#",
+"#######..#..#..#######..####..####..#",
+"#.....#..#........#..#..#.....#.....#",
+"####..#..#..####..#..#############..#",
+"#........#..#.....#..#...........#..#",
+"#######..#..#..#..#..#..#..#######..#",
+"#........#..#..#........#...........#",
+"####..####..#..#..####..##########..#",
+"#.....#..#..#..#..#..#.....#.....#..#",
+"#######..#######..#..#..#######..####",
+"#.....#........#.....#..#.....#.....#",
+"#..#..#..####..#..#..####..####..#..#",
+"#..#..#.....#.....#..#.....#.....#..#",
+"#..#######..#######..#..#######..####",
+"#.....#..#........#.................#",
+"#..#..#..####..####..################",
+"#..#..#........#..#........#..#.....#",
+"####..#..#######..#..####..#..#..####",
+"#..#.....#........#.....#..#.....#..#",
+"#..#..#..#..################..#..#..#",
+"#.....#.......................#.....",
+"##################################..",
+];
 
-                function drawMap(m){
-                    for(int i=0; i<m.length; i++){
-                        for(int j=0; j<m[i].length; j++){
-                            if(m[i][j]==1){
-                                ctx.beginPath();
-                                ctx.fillStyle= "#000000";
-                                ctx.fillRect(j*20, i*20, 20, 20);
-                            }
-                        }
-                    }
-                }
-                window.onload = function(){
-                    drawMap(map);
-                }
+
+
+
+drawLab();
+drawMc();
+moveMan();
+
+
+//character draw
+function drawMc(){
+    let x=0;
+    let y=0;
+    ctx.beginPath();
+    ctx.fillStyle='purple';
+    ctx.rect(x, y, 20, 20);
+    ctx.fill();
+}
+
+
+//maze generator!!
+function drawLab(){
+    for(let i=0; i<map1.length; i++){
+        let x=0;
+        let y=i*20;
+        for(let j=0; j<map1[i].length; j++){
+            if(map1[i][j]=="#"){
+                ctx.beginPath();
+                ctx.rect(x, y, 20, 20);
+                ctx.fill();
+                x=x+20
+                
+            }
+            else{
+                x=x+20
+            }
+        } 
+    }
+}
+         
+
+        let x = 0;
+        let y = 0;
+        let vx = 0;
+        let vy = 0;
+
+
+        addEventListener("keydown", function (mycanvas){
+            if(mycanvas.code = "KeyD") vx = 5;
+            if(mycanvas.code = "KeyA") vx = -5;
+            if(mycanvas.code = "KeyS") vy = 5;
+            if(mycanvas.code = "KeyW") vy = -5;
+        })
+
+        addEventListener("keyup", function (mycanvas){
+            if(mycanvas.code = "KeyD") vx = 0;
+            if(mycanvas.code = "KeyA") vx = 0;
+            if(mycanvas.code = "KeyS") vy = 0;
+            if(mycanvas.code = "KeyW") vy = 0;
+        })
+
+        function update(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            x += vx;
+            y += vy;
+            ctx.fillRect(x, y, 50, 50)
+            requestAnimationFrame(update)
+        }
+        update()
+
+
             </script>
         </div>
     </body>
