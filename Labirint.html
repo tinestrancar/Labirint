@@ -14,111 +14,90 @@
 console.log(canvas);
 var ctx = canvas.getContext("2d");
 
-let map1 = [
-"...##################################",
-"...#..#..#........#........#........#",
-"#..#..#..####..#..#######..#..#..#..#",
-"#..#.....#.....#..............#..#..#",
-"#..#..####..#######..#..#..####..####",
-"#........#........#..#..#..#........#",
-"#..#..#..###################..#..#..#",
-"#..#..#..#..#..#..#.....#..#..#..#..#",
-"#..#..####..#..#..#..#..#..#..#######",
-"#..#........#........#........#.....#",
-"#######..#..#..#######..####..####..#",
-"#.....#..#........#..#..#.....#.....#",
-"####..#..#..####..#..#############..#",
-"#........#..#.....#..#...........#..#",
-"#######..#..#..#..#..#..#..#######..#",
-"#........#..#..#........#...........#",
-"####..####..#..#..####..##########..#",
-"#.....#..#..#..#..#..#.....#.....#..#",
-"#######..#######..#..#..#######..####",
-"#.....#........#.....#..#.....#.....#",
-"#..#..#..####..#..#..####..####..#..#",
-"#..#..#.....#.....#..#.....#.....#..#",
-"#..#######..#######..#..#######..####",
-"#.....#..#........#.................#",
-"#..#..#..####..####..################",
-"#..#..#........#..#........#..#.....#",
-"####..#..#######..#..####..#..#..####",
-"#..#.....#........#.....#..#.....#..#",
-"#..#..#..#..################..#..#..#",
-"#.....#.......................#.....",
-"##################################..",
-];
 
 
 
 
-drawLab();
-drawMc();
-moveMan();
+let s="ssssssddwddddddddddddsssssssddd";
 
 
-//character draw
-function drawMc(){
-    let x=0;
-    let y=0;
-    ctx.beginPath();
-    ctx.fillStyle='purple';
-    ctx.rect(x, y, 20, 20);
-    ctx.fill();
-}
+let x=0;
+let y=0;
 
+for(let i=0; i<s.length; i++){
+    console.log("jajca");
+    switch (s[i]) {
+        case "a":
+            moveLeft();
+            break;
 
-//maze generator!!
-function drawLab(){
-    for(let i=0; i<map1.length; i++){
-        let x=0;
-        let y=i*20;
-        for(let j=0; j<map1[i].length; j++){
-            if(map1[i][j]=="#"){
-                ctx.beginPath();
-                ctx.rect(x, y, 20, 20);
-                ctx.fill();
-                x=x+20
-                
-            }
-            else{
-                x=x+20
-            }
-        } 
+        case "d":
+            moveRight();
+            break;
+        
+        case "w":
+            moveForward();
+            break;
+
+        case "s":
+            moveDown();
+            break;
     }
+    delay(1000);
 }
-         
 
-        let x = 0;
-        let y = 0;
-        let vx = 0;
-        let vy = 0;
+const newImage = new Image();
+newImage.src = 'https://fjolt.com/images/misc/202203281.png'
 
-
-        addEventListener("keydown", function (mycanvas){
-            if(mycanvas.code = "KeyD") vx = 5;
-            if(mycanvas.code = "KeyA") vx = -5;
-            if(mycanvas.code = "KeyS") vy = 5;
-            if(mycanvas.code = "KeyW") vy = -5;
-        })
-
-        addEventListener("keyup", function (mycanvas){
-            if(mycanvas.code = "KeyD") vx = 0;
-            if(mycanvas.code = "KeyA") vx = 0;
-            if(mycanvas.code = "KeyS") vy = 0;
-            if(mycanvas.code = "KeyW") vy = 0;
-        })
-
-        function update(){
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            x += vx;
-            y += vy;
-            ctx.fillRect(x, y, 50, 50)
-            requestAnimationFrame(update)
-        }
-        update()
+//ctx.drawImage(newImage, 0, 0, 250, 168);
 
 
-            </script>
+function delay(time) {
+    
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+delay(1000).then(() => console.log('ran after 1 second1 passed'));
+
+    function moveLeft(){
+        x-=10;
+        ctx.beginPath();
+        ctx.fillStyle='blue';
+        ctx.rect(x, y, 10, 10);
+        ctx.fill();
+    }
+
+
+    
+    function moveRight(){
+        x+=10;
+        ctx.beginPath();
+        ctx.fillStyle='blue';
+        ctx.rect(x, y, 10, 10);
+        ctx.fill();
+       
+        
+    }
+
+    function moveForward(){
+        y-=10;
+        ctx.beginPath();
+        ctx.fillStyle='blue';
+        ctx.rect(x, y, 10, 10);
+        ctx.fill();
+    }
+
+    function moveDown(){
+        y+=10;
+        ctx.beginPath();
+        ctx.fillStyle='blue';
+        ctx.rect(x, y, 10, 10);
+        ctx.fill();
+    }
+
+
+
+        </script>
         </div>
     </body>
 

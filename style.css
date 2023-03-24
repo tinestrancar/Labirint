@@ -1,8 +1,3 @@
-#wrapper{
-    
-     
-}
-
 #zunanji{
     text-align: center;
     font-size: 35px;
@@ -16,9 +11,9 @@
 
 
 #mycanvas{
-    background-color: bisque;
     padding-left: 0;
     padding-right: 0;
+    background-image: url("images/test.png");
     margin-left: auto;
     margin-right: auto;
     display: block;
