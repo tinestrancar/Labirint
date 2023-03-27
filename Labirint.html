@@ -4,10 +4,15 @@
     </head>
 
     <body>
-        <div id="zunanji">MESOJEDEC</div>
+        <div id="zunanji">SJRČEK</div>
 
         <div id="main">
-            <canvas id="mycanvas" width="740" height="620"></canvas>
+            <canvas id="mycanvas" width="600" height="600"></canvas>
+        </div>
+
+        <div id="nagrada">
+            <img src="images/pika.webp">
+        </div>
             <script>
                 
                 var canvas = document.getElementById("mycanvas");
@@ -15,16 +20,32 @@ console.log(canvas);
 var ctx = canvas.getContext("2d");
 
 
+const img= new Image();
+img.src='images/mouse1.jpg'
 
 
+img.onload = function(){
+	station();
+}
 
-let s="ssssssddwddddddddddddsssssssddd";
+
+let s="ssssssssssssaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddddddddddddddddddddddddssssssssssssssssssssssssssssssaaaaaaaaassssssssssssssssssssdddddddddsssssssssddddddddddddddddddddwwwwwwwwwddddddddddsssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssss";
 
 
-let x=0;
-let y=0;
+let x=271;
+let y=16;
+let condition=0;
 
-for(let i=0; i<s.length; i++){
+premik();
+
+function premik() {
+    movement(condition);
+    condition++;
+    setTimeout(() => {premik()}, 20);
+}
+
+
+function movement(i){
     console.log("jajca");
     switch (s[i]) {
         case "a":
@@ -43,24 +64,15 @@ for(let i=0; i<s.length; i++){
             moveDown();
             break;
     }
-    delay(1000);
 }
 
-const newImage = new Image();
-newImage.src = 'https://fjolt.com/images/misc/202203281.png'
+    function station(){
+        ctx.drawImage(img, 265, 10);
 
-//ctx.drawImage(newImage, 0, 0, 250, 168);
-
-
-function delay(time) {
-    
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-
-delay(1000).then(() => console.log('ran after 1 second1 passed'));
+    }
 
     function moveLeft(){
-        x-=10;
+        x-=5;
         ctx.beginPath();
         ctx.fillStyle='blue';
         ctx.rect(x, y, 10, 10);
@@ -70,17 +82,16 @@ delay(1000).then(() => console.log('ran after 1 second1 passed'));
 
     
     function moveRight(){
-        x+=10;
+        x+=5;
         ctx.beginPath();
         ctx.fillStyle='blue';
         ctx.rect(x, y, 10, 10);
         ctx.fill();
-       
         
     }
 
     function moveForward(){
-        y-=10;
+        y-=5;
         ctx.beginPath();
         ctx.fillStyle='blue';
         ctx.rect(x, y, 10, 10);
@@ -88,13 +99,12 @@ delay(1000).then(() => console.log('ran after 1 second1 passed'));
     }
 
     function moveDown(){
-        y+=10;
+        y+=5;
         ctx.beginPath();
         ctx.fillStyle='blue';
         ctx.rect(x, y, 10, 10);
         ctx.fill();
     }
-
 
 
         </script>
