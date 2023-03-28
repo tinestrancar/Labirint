@@ -11,7 +11,7 @@
         </div>
 
         <div id="nagrada">
-            <img src="images/pika.webp">
+            <img style="margin-left: 50px;" src="images/sjr1.png">
         </div>
             <script>
                 
@@ -21,32 +21,48 @@ var ctx = canvas.getContext("2d");
 
 
 const img= new Image();
-img.src='images/mouse1.jpg'
+img.src='images/mice1.png'
 
 
 img.onload = function(){
 	station();
+    
+    ctx.drawImage(img, 258, 10);
 }
 
 
-let s="ssssssssssssaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddddddddddddddddddddddddssssssssssssssssssssssssssssssaaaaaaaaassssssssssssssssssssdddddddddsssssssssddddddddddddddddddddwwwwwwwwwddddddddddsssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssss";
+let s="sssssssssssssaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddddddddddddddddddddddddssssssssssssssssssssssssssssssaaaaaaaaaassssssssssssssssssssddddddddddsssssssssddddddddddddddddddddwwwwwwwwwdddddddddsssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssss";
+let z=s;
 
-
-let x=271;
+let x=273;
 let y=16;
 let condition=0;
+let j=0;
+
 
 premik();
 
 function premik() {
     movement(condition);
     condition++;
-    setTimeout(() => {premik()}, 20);
+    if (condition<s.length) 
+    setTimeout(() => {premik()}, 5);
+    else{
+        x=260
+        y=10
+        premikImg(j)
+    }
+}
+
+function premikImg() {
+    station(j);
+    j++;
+    setTimeout(() => {premikImg()}, 20);
 }
 
 
 function movement(i){
-    console.log("jajca");
+    console.log("premikanje");
     switch (s[i]) {
         case "a":
             moveLeft();
@@ -66,16 +82,59 @@ function movement(i){
     }
 }
 
-    function station(){
-        ctx.drawImage(img, 265, 10);
+    function station(j){
+        switch (z[j]) {
+        case "a":
+            moveLeftImage();
+            break;
+
+        case "d":
+            moveRightImage();
+            break;
+        
+        case "w":
+            moveUpImage();
+            break;
+
+        case "s":
+            moveDownImage();
+            break;
+    }
 
     }
+
+    function moveLeftImage(){
+        x-=5;
+        ctx.clearRect(x, y, 40, 30)
+        ctx.drawImage(img, x, y)
+        img.style = "transform: rotate(90deg)"
+    }
+
+    function moveRightImage(){
+        x+=5;
+        ctx.clearRect(x-5, y, 40, 30)
+        ctx.drawImage(img, x, y)
+    }
+
+    function moveDownImage(){
+        y+=5;
+        ctx.clearRect(x, y-10, 40, 30)
+        ctx.drawImage(img, x, y)
+    }
+
+    function moveUpImage(){
+        y-=5;
+        ctx.clearRect(x, y, 40, 30)
+        ctx.drawImage(img, x, y)
+    }
+
+
 
     function moveLeft(){
         x-=5;
         ctx.beginPath();
-        ctx.fillStyle='blue';
-        ctx.rect(x, y, 10, 10);
+        ctx.fillStyle='yellow';
+        ctx.rect(x, y, 2, 2);
         ctx.fill();
     }
 
@@ -84,8 +143,8 @@ function movement(i){
     function moveRight(){
         x+=5;
         ctx.beginPath();
-        ctx.fillStyle='blue';
-        ctx.rect(x, y, 10, 10);
+        ctx.fillStyle='yellow';
+        ctx.rect(x, y, 2, 2);
         ctx.fill();
         
     }
@@ -93,16 +152,16 @@ function movement(i){
     function moveForward(){
         y-=5;
         ctx.beginPath();
-        ctx.fillStyle='blue';
-        ctx.rect(x, y, 10, 10);
+        ctx.fillStyle='yellow';
+        ctx.rect(x, y, 2, 2);
         ctx.fill();
     }
 
     function moveDown(){
         y+=5;
         ctx.beginPath();
-        ctx.fillStyle='blue';
-        ctx.rect(x, y, 10, 10);
+        ctx.fillStyle='yellow';
+        ctx.rect(x, y, 2, 2);
         ctx.fill();
     }
 

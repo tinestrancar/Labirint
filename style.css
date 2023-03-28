@@ -2,6 +2,7 @@ body{
     background-image: url("images/bg2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: none;
 }
 
 #zunanji{
@@ -9,7 +10,7 @@ body{
     font-size: 47px;
     font-weight: bold;
     font-style: italic;
-    color:rgb(255, 172, 65);
+    color:rgb(255, 243, 82);
 }
 
 #main{
