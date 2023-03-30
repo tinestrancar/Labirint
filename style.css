@@ -1,5 +1,5 @@
 body{
-    background-image: url("images/bg2.jpg");
+    background-image: url("images/test2.png");
     background-repeat: no-repeat;
     background-size: cover;
     overflow: none;
@@ -29,6 +29,7 @@ body{
 
 #nagrada{
     text-align: center;
+    transform: translateY(-58px) rotate(10deg);
 }
 
 #maze_container{
@@ -37,4 +38,10 @@ body{
     color: black;
     width: auto;
     height: auto;
+}
+
+button{
+    margin-left: 50%;
+    transform: translateX(-50%);
+
 }

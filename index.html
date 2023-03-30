@@ -1,11 +1,15 @@
 <html>
     <head><title>Labirint</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
     </head>
 
     <body>
-        <div id="zunanji">SJRČEK</div>
+        <div id="zunanji">Mouse Maze</div>
 
+        <br>
+        <br>
+        <br>
         <div id="main">
             <canvas id="mycanvas" width="600" height="600"></canvas>
         </div>
@@ -13,161 +17,8 @@
         <div id="nagrada">
             <img style="margin-left: 50px;" src="images/sjr1.png">
         </div>
-            <script>
-                
-                var canvas = document.getElementById("mycanvas");
-console.log(canvas);
-var ctx = canvas.getContext("2d");
 
-
-const img= new Image();
-img.src='images/mice1.png'
-
-
-img.onload = function(){
-	station();
-    
-    ctx.drawImage(img, 258, 10);
-}
-
-
-let s="sssssssssssssaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdddddddddddddddddddddddddddddssssssssssssssssssssssssssssssaaaaaaaaaassssssssssssssssssssddddddddddsssssssssddddddddddddddddddddwwwwwwwwwdddddddddsssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssss";
-let z=s;
-
-let x=273;
-let y=16;
-let condition=0;
-let j=0;
-
-
-premik();
-
-function premik() {
-    movement(condition);
-    condition++;
-    if (condition<s.length) 
-    setTimeout(() => {premik()}, 5);
-    else{
-        x=260
-        y=10
-        premikImg(j)
-    }
-}
-
-function premikImg() {
-    station(j);
-    j++;
-    setTimeout(() => {premikImg()}, 20);
-}
-
-
-function movement(i){
-    console.log("premikanje");
-    switch (s[i]) {
-        case "a":
-            moveLeft();
-            break;
-
-        case "d":
-            moveRight();
-            break;
-        
-        case "w":
-            moveForward();
-            break;
-
-        case "s":
-            moveDown();
-            break;
-    }
-}
-
-    function station(j){
-        switch (z[j]) {
-        case "a":
-            moveLeftImage();
-            break;
-
-        case "d":
-            moveRightImage();
-            break;
-        
-        case "w":
-            moveUpImage();
-            break;
-
-        case "s":
-            moveDownImage();
-            break;
-    }
-
-    }
-
-    function moveLeftImage(){
-        x-=5;
-        ctx.clearRect(x, y, 40, 30)
-        ctx.drawImage(img, x, y)
-        img.style = "transform: rotate(90deg)"
-    }
-
-    function moveRightImage(){
-        x+=5;
-        ctx.clearRect(x-5, y, 40, 30)
-        ctx.drawImage(img, x, y)
-    }
-
-    function moveDownImage(){
-        y+=5;
-        ctx.clearRect(x, y-10, 40, 30)
-        ctx.drawImage(img, x, y)
-    }
-
-    function moveUpImage(){
-        y-=5;
-        ctx.clearRect(x, y, 40, 30)
-        ctx.drawImage(img, x, y)
-    }
-
-
-
-    function moveLeft(){
-        x-=5;
-        ctx.beginPath();
-        ctx.fillStyle='yellow';
-        ctx.rect(x, y, 2, 2);
-        ctx.fill();
-    }
-
-
-    
-    function moveRight(){
-        x+=5;
-        ctx.beginPath();
-        ctx.fillStyle='yellow';
-        ctx.rect(x, y, 2, 2);
-        ctx.fill();
-        
-    }
-
-    function moveForward(){
-        y-=5;
-        ctx.beginPath();
-        ctx.fillStyle='yellow';
-        ctx.rect(x, y, 2, 2);
-        ctx.fill();
-    }
-
-    function moveDown(){
-        y+=5;
-        ctx.beginPath();
-        ctx.fillStyle='yellow';
-        ctx.rect(x, y, 2, 2);
-        ctx.fill();
-    }
-
-
-        </script>
-        </div>
+        <script defer src="script.js"></script>
     </body>
 
 
